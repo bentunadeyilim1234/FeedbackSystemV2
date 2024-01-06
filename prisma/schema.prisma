@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mongodb"
+  url               = env("DATABASE_URL")
+}
+
+model Feedbacks {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  feedbackId   Int
+  experienceId Int
+  createdAt    DateTime @default(now())
+  feedback     String
+  playerName   String
+  userId       String
+  rating       Int      @default(0)
+}
